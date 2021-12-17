@@ -1,4 +1,4 @@
-FROM fedora:35 as base
+FROM fedora:34 as base
 
 # Everything we need to build our SDK and packages.
 RUN \
@@ -633,7 +633,7 @@ FROM sdk as sdk-plus
 USER root
 RUN \
   dnf -y install --setopt=install_weak_deps=False \
-    java-11-openjdk-devel maven-openjdk11 maven-local \
+    java-11-openjdk-devel maven maven-local \
     maven-clean-plugin maven-shade-plugin
 
 # =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=
