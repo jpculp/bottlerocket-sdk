@@ -1,13 +1,12 @@
 TOP := $(dir $(abspath $(firstword $(MAKEFILE_LIST))))
 
 HOST_ARCH ?= $(shell uname -m)
-DOCKER_ARCH ?= $(lastword $(subst :, ,$(filter $(HOST_ARCH):%,x86_64:amd64 aarch64:arm64)))
 UPSTREAM_SOURCE_FALLBACK ?= false
 
 VERSION := $(shell cat $(TOP)VERSION)
 SHORT_SHA := $(shell git rev-parse --short=8 HEAD)
 
-IMAGE_NAME ?= bottlerocket-sdk:$(VERSION)-$(SHORT_SHA)-$(DOCKER_ARCH)
+IMAGE_NAME ?= bottlerocket-sdk:$(VERSION)-$(SHORT_SHA)-$(HOST_ARCH)
 
 all: sdk
 
