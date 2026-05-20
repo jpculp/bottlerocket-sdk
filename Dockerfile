@@ -688,9 +688,9 @@ RUN \
   mkdir -p /usr/libexec/tools /usr/share/licenses/govmomi && \
   chown -R builder:builder /usr/libexec/tools /usr/share/licenses/govmomi
 
-ENV GOVMOMIVER="0.46.3"
-ENV GOVMOMISHORTCOMMIT="e5dcb5f"
-ENV GOVMOMIDATE="2024-12-12T20:11:39Z"
+ENV GOVMOMIVER="0.54.0"
+ENV GOVMOMISHORTCOMMIT="df7c057a"
+ENV GOVMOMIDATE="2026-05-08T21:11:24Z"
 
 USER builder
 WORKDIR /home/builder/go/src/github.com/vmware/govmomi
@@ -711,7 +711,7 @@ RUN \
 
 RUN \
   export CGO_ENABLED=0 ; \
-  export BUILD_VERSION_PKG="github.com/vmware/govmomi/govc/flags" ; \
+  export BUILD_VERSION_PKG="github.com/vmware/govmomi/cli/flags" ; \
   go build -mod=vendor -o /usr/libexec/tools/govc -ldflags " \
     -s -w \
     -X ${BUILD_VERSION_PKG}.BuildVersion=${GOVMOMIVER} \
